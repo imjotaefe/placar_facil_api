@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <mate charest="utf-8" />
+        <title>Sumula: {{ this.date }}</title>
+        <style>
+          * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-size: 10px;
+            text-align: left;
+            font-family: sans-serif;
+          }
+          .marginDoccument{
+            margin: 10px
+          }
+          .width100 {
+            width: 100% !important
+          }
+          .alignCenter {
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+          }
+          .paddingVertical50{
+            padding-top: 50px;
+            padding-bottom: 50px;
+          }
+        </style>
+    </head>
+
+    <body>
+      <table class='width100 marginDoccument' border="0" cellspacing="0" cellpadding="0">
+        <tr>
+          <td class="alignCenter paddingVertical50" >Sumula</td>
+        </tr>
+        <tr>
+          <th>Data:</th>
+          <th>Tipo:</th>
+          <th>Duração total:</th>
+        </tr>
+        <tr>
+          <th>Time A:</th>
+          <th>Time B:</th>
+        </tr>
+        <tr>
+          <th>Jogador 1:</th>
+          <th>Jogador 2:</th>
+        </tr>
+        <tr>
+          <td>{{ this.leftPlayers.player1 }}</td>
+          <td>{{ this.rightPlayers.player1 }}</td>
+        </tr>
+        <tr>
+          <th>Jogador 3:</th>
+          <th>Jogador 4:</th>
+        </tr>
+        <tr>
+          <td>{{ this.leftPlayers.player2 }}</td>
+          <td>{{ this.rightPlayers.player2 }}</td>
+        </tr>
+        
+        
+    </table>
+    </body>
+</html>
