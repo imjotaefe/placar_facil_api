@@ -10,14 +10,21 @@ class PDFHelper {
     const options = {
       format: "A4",
       orientation: "portrait",
-      border: "10mm"
+      border: "10mm",
+      footer: {
+        height: "28mm",
+        contents: {
+            default: 
+            '<div style="text-align: right"><span style="color: #444;">{{page}}</span><div style="text-align: right"><span style="color: #999;">Placar Fácil</span></div></div>',
+        }
+    }
     };
 
     const fileName = uuid();
     const document = {
       html,
       data,
-      path: path.resolve(__dirname, `../../public/sumulas/${fileName}.pdf`)
+      path: path.resolve(__dirname, `../../public/sumulas/${fileName}.pdf`),
     }
 
     await pdf.create(document, options);

@@ -2,21 +2,24 @@
 <html>
     <head>
         <mate charest="utf-8" />
-        <title>Sumula: {{ this.date }}</title>
+        <title>Sumula</title>
         <style>
           * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
             font-size: 10px;
-            text-align: left;
             font-family: sans-serif;
+            text-align: center;
           }
           .marginDoccument{
             margin: 10px
           }
+          .marginTop{
+            margin-top: 20px
+          }
           .width100 {
-            width: 100% !important
+            width: 60% !important
           }
           .alignCenter {
             text-align: center;
@@ -27,41 +30,124 @@
             padding-top: 50px;
             padding-bottom: 50px;
           }
+          .myTable {
+            font-family: 'Arial';
+            margin: 25px auto;
+            margin-bottom: 60px;
+            border-collapse: collapse;
+            border: 1px solid #eee;
+            border-bottom: 2px solid #FF9F00;
+            box-shadow: 0px 0px 20px rgba(0,0,0,0.10),
+              0px 10px 20px rgba(0,0,0,0.05),
+              0px 20px 20px rgba(0,0,0,0.05),
+              0px 30px 20px rgba(0,0,0,0.05);
+          }
+          .myTh, .myTd {
+              color: #999;
+              border: 1px solid #eee;
+              padding: 12px 35px;
+              border-collapse: collapse;
+              font-size: 12px;
+            }
+          .myTh {
+            background: #FF9F00;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 14px;
+          }
+          .title{
+            font-size: 20px;
+            font-weight: bold;
+            color: #5754E9;
+          }
+          .description{
+            font-size: 14px;
+            color: #cccccc;
+          }
+          h1{
+            text-transform: uppercase;
+          }
+          .headerTable {
+            font-family: 'Arial';
+            margin: 25px auto;
+            margin-bottom: 60px;
+            border-collapse: collapse;
+            border: 1px solid #eee;          
+          }
+          .tdHeader{
+            font-size: 12px;
+            font-weight: bold;
+            color: #999;
+            padding: 12px 35px;
+          }
+          .thHeader{
+            font-size: 14px;
+            font-weight: bold;
+            padding: 12px 35px;
+          }
+          .score{
+            font-size: 40px;
+            font-weight: bold;
+            color: #000;
+          }
         </style>
     </head>
 
     <body>
-      <table class='width100 marginDoccument' border="0" cellspacing="0" cellpadding="0">
+      <h1 class="title marginTop">Sumula</h1>
+      <table class='width100 marginDoccument headerTable' border="1px" cellpadding="5px" cellspacing="0">
         <tr>
-          <td class="alignCenter paddingVertical50" >Sumula</td>
+          <th class="thHeader">Data</th>
+          <th class="thHeader">Tipo</th>
+          <th class="thHeader">Melhor de</th>
+          <th class="thHeader">Duração total</th>
         </tr>
         <tr>
-          <th>Data:</th>
-          <th>Tipo:</th>
-          <th>Duração total:</th>
+          <td class="tdHeader">{{this.gameFinishedAt}}</td>
+          <td class="tdHeader">{{this.gameType}}</td>
+          <td class="tdHeader">{{this.bestOf}}</td>
+          <td class="tdHeader">{{this.totalGameTime}}</td>
+        </tr>
+      </table>
+        <table class='width100 marginDoccument myTable' border="1px" cellpadding="5px" cellspacing="0">
+        <tr>
+          <th class="myTh">Time A</th>
+          <th class="myTh">Time B</th>
         </tr>
         <tr>
-          <th>Time A:</th>
-          <th>Time B:</th>
-        </tr>
-        <tr>
-          <th>Jogador 1:</th>
-          <th>Jogador 2:</th>
-        </tr>
-        <tr>
-          <td>{{ this.leftPlayers.player1 }}</td>
-          <td>{{ this.rightPlayers.player1 }}</td>
-        </tr>
-        <tr>
-          <th>Jogador 3:</th>
-          <th>Jogador 4:</th>
-        </tr>
-        <tr>
-          <td>{{ this.leftPlayers.player2 }}</td>
-          <td>{{ this.rightPlayers.player2 }}</td>
+          <td class="myTd">{{ this.leftPlayers.player1 }}</td>
+          <td class="myTd">{{ this.rightPlayers.player1 }}</td>
         </tr>
         
-        
-    </table>
+        <tr>
+          <td class="myTd">{{ this.leftPlayers.player2 }}</td>
+          <td class="myTd">{{ this.rightPlayers.player2 }}</td>
+        </tr>
+        <tr>
+          <td class="myTd score">{{ this.leftPlayers.finalGame }}</td>
+          <td class="myTd score">{{ this.rightPlayers.finalGame }}</td>
+        </tr>
+      </table>
+     
+      {{#each gameSumula}}
+        <h1 class="title">Game {{this.gameNumber}}</h1>
+        <h1 class="description">duração do game: {{this.gameFinishedAt}}</h1>
+        <div>
+        <table class='width100 marginDoccument myTable' border="1px" cellpadding="5px" cellspacing="0">
+          <tr class="myTr">
+            <th class="myTh">Hora do ponto</th>
+            <th class="myTh">Time A</th>
+            <th class="myTh">Time B</th>
+          </tr>
+          {{#each meuGame}}
+            <tr class="myTr">
+              <td class="myTd">{{this.time}}</td>
+              <td class="myTd">{{this.leftScore}}</td>
+              <td class="myTd">{{this.rightScore}}</td>
+            </tr>
+          {{/each}}
+        </table>
+        </div>
+      {{/each}}
     </body>
 </html>
