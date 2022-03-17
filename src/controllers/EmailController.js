@@ -17,7 +17,12 @@ const sendEmail = async (req, res, next) => {
       const meuGame = Object.keys(item).flatMap(function (key) {
         return  key !== 'gameFinishedAt' && key !== 'expediteSystemWasUsed' ? item[key] : [];
       });
-      return {gameNumber:index + 1, meuGame, gameFinishedAt: item.gameFinishedAt};
+      return {
+        gameNumber:index + 1,
+        meuGame,
+        gameFinishedAt: item.gameFinishedAt,
+        expediteSystemWasUsed: item.expediteSystemWasUsed === true ? 'Sim' : 'Não'
+      };
     }
     return null;
   })
