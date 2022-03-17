@@ -2,6 +2,7 @@ const pdf = require("pdf-creator-node");
 const fs = require("fs");
 const path = require("path");
 const { v4: uuid } = require("uuid");
+require('dotenv').config();
 
 class PDFHelper {
   static async generate(data) {
@@ -29,7 +30,7 @@ class PDFHelper {
 
     await pdf.create(document, options);
 
-    return { fileName: `${fileName}.pdf`, path: `http://localhost:3000/sumulas/${fileName}.pdf` };
+    return { fileName: `${fileName}.pdf`, path: `${process.env.HOST}/sumulas/${fileName}.pdf` };
   }
 }
 
