@@ -3,15 +3,14 @@ var cors = require('cors');
 var router = require('./src/routes');
 
 const app = express();
-const port = 3000;
 app.use(express.static('public'));
 app.use(express.json());
 app.use(cors());
 
 app.use('/', router);
 
-app.listen(port, () => {
-  console.log(`API is runing on port ${port}`);
+app.listen(listen(process.env.PORT || 5000), () => {
+  console.log(`API is runing on port ${listen(process.env.PORT || 5000)}`);
 })
 
 
