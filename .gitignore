@@ -6,3 +6,4 @@ tmp
 .env.testing
 database/*.sqlite
 public/sumulas/*
+.vercel
